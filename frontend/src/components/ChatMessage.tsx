@@ -20,7 +20,7 @@ export const ChatMessage = ({ message, isBot, timestamp }: ChatMessageProps) => 
       className={`flex gap-3 ${isBot ? 'justify-start' : 'justify-end'}`}
     >
       {isBot && (
-        <div className="w-8 h-8 rounded-full gradient-brand flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-full flex items-center justify-center shadow-md flex-shrink-0" style={{ background: 'linear-gradient(135deg, #0ea5e9, #06b6d4)' }}>
           <Bot className="h-4 w-4 text-white" />
         </div>
       )}

@@ -6,6 +6,7 @@ import { PrimaryCTA } from "@/components/PrimaryCTA";
 import { SubjectCard } from "@/components/SubjectCard";
 import { FeatureCard } from "@/components/FeatureCard";
 import { ChatDock } from "@/components/ChatDock";
+import { Button } from "@/components/ui/button";
 import { 
   Microscope, 
   Calculator, 
@@ -101,11 +102,43 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-20 blur-3xl"
+          style={{ background: 'linear-gradient(135deg, rgb(147, 51, 234), rgb(236, 72, 153))' }}
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-15 blur-3xl"
+          style={{ background: 'linear-gradient(135deg, rgb(236, 72, 153), rgb(251, 146, 60))' }}
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -50, 0],
+            y: [0, -40, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -113,28 +146,70 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-primary leading-tight">
+            {/* Animated badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-block"
+            >
+              <div className="glass-light border border-glass-border rounded-full px-4 py-2 text-sm text-secondary">
+                ✨ Powered by Advanced AI & Machine Learning
+              </div>
+            </motion.div>
+
+            <h1 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
               Your AI-Powered
-              <span className="gradient-brand bg-clip-text text-transparent"> STEM </span>
-              Companion
+              <span className="gradient-brand bg-clip-text text-transparent block mt-2"> STEM Companion </span>
             </h1>
             
-            <p className="text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-secondary max-w-3xl mx-auto leading-relaxed">
               Get instant, accurate answers for Science, Math, and Social Science questions. 
               Upload documents, solve problems step-by-step, and accelerate your learning journey.
             </p>
             
-            <div className="pt-8">
+            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <PrimaryCTA onClick={() => setIsChatOpen(true)}>
-                Dive into STEM BOT
+                Start Learning Now
               </PrimaryCTA>
+              <Button variant="outline" size="lg" className="group">
+                Watch Demo
+                <motion.span
+                  className="ml-2"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </Button>
             </div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="pt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            >
+              {[
+                { label: 'Subjects', value: '10+' },
+                { label: 'Students', value: '50K+' },
+                { label: 'Accuracy', value: '99%' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-3xl font-bold gradient-brand bg-clip-text text-transparent">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Subject Cards */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -143,11 +218,14 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Choose Your Subject
+            <div className="inline-block glass-light border border-glass-border rounded-full px-4 py-1.5 text-sm text-accent mb-4">
+              🎯 Choose Your Domain
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+              Specialized AI Assistants
             </h2>
             <p className="text-lg text-secondary max-w-2xl mx-auto">
-              Specialized AI assistants trained for different academic domains
+              Each bot is trained on domain-specific knowledge to provide the most accurate answers
             </p>
           </motion.div>
 
@@ -167,8 +245,8 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-subtle">
-        <div className="max-w-7xl mx-auto">
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="glass-light rounded-3xl border border-glass-border p-12 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -176,11 +254,14 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Powerful Features
+            <div className="inline-block glass-medium border border-glass-border rounded-full px-4 py-1.5 text-sm text-accent mb-4">
+              ⚡ Advanced Capabilities
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+              Everything You Need to Excel
             </h2>
             <p className="text-lg text-secondary max-w-2xl mx-auto">
-              Everything you need to excel in your studies
+              Powerful features designed to enhance your learning experience
             </p>
           </motion.div>
 
@@ -199,7 +280,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,7 +289,10 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            <div className="inline-block glass-light border border-glass-border rounded-full px-4 py-1.5 text-sm text-accent mb-4">
+              ❓ Got Questions?
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-secondary">

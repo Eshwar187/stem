@@ -1,17 +1,34 @@
-# STEM Bot - AI-Powered Study Assistant
+# STEM Bot - AI-Powered Study Assistant 🚀
 
 A modern, production-ready website for STEM Bot - an AI-powered assistant that provides instant answers for Science, Math, and Social Science questions.
 
 ## ✨ Features
 
 - **🔬 Multi-Subject Support**: Science, Mathematics, and Social Sciences
-- **📱 Responsive Design**: iOS-17 inspired glassmorphism UI
-- **🤖 Standalone Chat**: Beautiful chat interface ready for backend integration
-- **📄 OCR Support**: Upload PDFs and images for instant analysis
+- **📱 Responsive Design**: Modern purple-pink gradient theme with glassmorphism UI
+- **🤖 Standalone Chat**: Beautiful chat interface with file upload support
+- **� File Upload**: Upload PDFs and images for instant OCR analysis
 - **📊 Export Options**: Download chat history in Markdown or JSON
-- **🎨 Beautiful UI**: Premium design with smooth animations
-- **🌙 Dark/Light Mode**: Auto-switching theme support
+- **🎨 Beautiful UI**: Premium design with smooth animations and floating gradients
+- **🌙 Dark/Light Mode**: Auto-switching theme support with purple theme
 - **⚙️ Customizable**: Adjustable settings and compact mode
+
+## 🎨 New Design (v2.0)
+
+### Color Scheme
+- **Primary**: Purple `rgb(147, 51, 234)`
+- **Accent**: Pink `rgb(236, 72, 153)`
+- **Highlight**: Orange `rgb(251, 146, 60)`
+- **Gradient**: Purple → Pink → Orange
+- Enhanced glassmorphism with purple-tinted borders
+- Animated floating gradient backgrounds
+
+### File Upload
+- PDF and Image support (`.pdf`, `.png`, `.jpg`, `.jpeg`)
+- Multiple file upload capability
+- Visual file preview with remove option
+- Toast notifications for upload feedback
+- Integrated with chat interface
 
 ## 🚀 Quick Start
 
